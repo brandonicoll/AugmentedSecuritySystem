@@ -5,8 +5,6 @@ public class userdata {
     public String range;
     public Integer timestamp;
 
-
-
     public userdata(String range,Integer timestamp)
     {
         this.range = range;
