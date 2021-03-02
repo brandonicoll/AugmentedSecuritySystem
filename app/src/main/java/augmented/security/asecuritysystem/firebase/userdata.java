@@ -2,12 +2,15 @@ package augmented.security.asecuritysystem.firebase;
 
 public class userdata {
 
-    public String range;
+    public long range;
     public Integer timestamp;
 
+    public userdata() {
+
+    }
 
 
-    public userdata(String range,Integer timestamp)
+    public userdata(long range,Integer timestamp)
     {
         this.range = range;
         this.timestamp = timestamp;
@@ -15,19 +18,5 @@ public class userdata {
 
     }
 
-    public String getRange() {
-        return range;
-    }
 
-    public Integer getTimestamp() {
-        return timestamp;
-    }
-
-    public void setRange(String range) {
-        this.range = range;
-    }
-
-    public void setTimestamp(Integer timestamp) {
-        this.timestamp = timestamp;
-    }
 }
