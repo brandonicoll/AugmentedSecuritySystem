@@ -32,7 +32,9 @@ public class LockFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         TextView textView = root.findViewById(R.id.text_home);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        //Causes app to crash
+
+      /*  user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("distance");
 
 
@@ -55,7 +57,7 @@ public class LockFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         return root;
     }
