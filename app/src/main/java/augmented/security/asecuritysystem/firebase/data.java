@@ -1,18 +1,18 @@
 package augmented.security.asecuritysystem.firebase;
 
-public class userdata {
+public class data{
 
-    public long range;
+    public String fire;
     public Integer timestamp;
 
-    public userdata() {
+    public data() {
 
     }
 
 
-    public userdata(long range,Integer timestamp)
+    public data(String fire,Integer timestamp)
     {
-        this.range = range;
+        this.fire = fire;
         this.timestamp = timestamp;
 
 
