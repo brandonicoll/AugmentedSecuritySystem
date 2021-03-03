@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.distance;
 import augmented.security.asecuritysystem.firebase.rfid;
-import augmented.security.asecuritysystem.firebase.userdata;
+
 
 public class LockFragment extends Fragment {
 
