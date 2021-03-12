@@ -4,34 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C5EDFF"
     tools:context=".ui.fire.FireFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
-        android:text="We're safe! No fire."
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="943dp"
+        android:layout_height="1143dp"
+        android:src="@drawable/_64553"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769" />
+
+    <TextView
+        android:id="@+id/text_slideshow"
+        android:layout_width="413dp"
+        android:layout_height="89dp"
+        android:background="#00FFFFFF"
+        android:text="We're safe! No fire."
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.373" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="648dp"
+        android:layout_height="471dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/crystal_project_folder_home"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fire"
+        app:layout_constraintVertical_bias="0.943" />
 
     <ImageView
         android:id="@+id/fire"
         android:layout_width="598dp"
         android:layout_height="894dp"
         android:layout_marginTop="88dp"
+        android:background="#0003A9F4"
         android:src="@drawable/fire_png_transparent"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

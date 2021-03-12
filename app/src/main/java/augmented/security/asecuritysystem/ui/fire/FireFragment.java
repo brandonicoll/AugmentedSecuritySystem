@@ -1,6 +1,11 @@
 package augmented.security.asecuritysystem.ui.fire;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +48,19 @@ public class FireFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("data");
 
+        //notification channel and manager code
+        int notifyID = 1;
+        String CHANNEL_ID = "my_channel_01";
+        CharSequence name = "Expense";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+        Notification notification = new Notification.Builder(getActivity())
+                .setContentTitle("ALERT:")
+                .setContentText("Your fire alarm has detected a fire!")
+                .setSmallIcon(R.drawable.fire_png_transparent)
+                .setChannelId(CHANNEL_ID)
+                .build();
+
 
         reference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -55,9 +73,14 @@ public class FireFragment extends Fragment {
                 textView.setText(String.format("%s", fire));
                 if (fire.equals("We're safe! No fire.")) {
                     fireimg.setVisibility(View.INVISIBLE);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
                 }
                 else  {
                     fireimg.setVisibility(View.VISIBLE);
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
                 }
             }
 
@@ -74,6 +97,9 @@ public class FireFragment extends Fragment {
                 }
                 else  {
                     fireimg.setVisibility(View.VISIBLE);
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
                 }
             }
 
@@ -95,6 +121,9 @@ public class FireFragment extends Fragment {
                 }
                 else  {
                     fireimg.setVisibility(View.VISIBLE);
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
                 }
             }
 
