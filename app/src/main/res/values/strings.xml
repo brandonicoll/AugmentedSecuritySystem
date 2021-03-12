@@ -40,7 +40,7 @@
     <string name="logged">Successfully logged out!</string>
     <string name="Surelogout">Are you sure you want to logout?</string>
     <string name="exit">Exit settings?</string>
-
+    <string name="augmented_security_system">Augmented Security System</string>
 
 
 </resources>

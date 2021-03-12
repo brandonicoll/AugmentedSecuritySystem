@@ -1,14 +1,14 @@
-package augmented.security.asecuritysystem.ui.gallery;
+package augmented.security.asecuritysystem.ui.distance;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class DistanceViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public DistanceViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }

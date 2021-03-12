@@ -1,4 +1,4 @@
-package augmented.security.asecuritysystem.ui.gallery;
+package augmented.security.asecuritysystem.ui.distance;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,13 +18,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.distance;
 
 
-public class GalleryFragment extends Fragment {
+public class DistanceFragment extends Fragment {
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -38,7 +37,7 @@ public class GalleryFragment extends Fragment {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("distance");
-
+        //userID = distance.getUID;
 
         reference.addChildEventListener(new ChildEventListener() {
             @Override

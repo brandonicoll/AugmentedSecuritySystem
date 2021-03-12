@@ -1,4 +1,4 @@
-package augmented.security.asecuritysystem.ui.slideshow;
+package augmented.security.asecuritysystem.ui.fire;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,18 +22,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.data;
-import augmented.security.asecuritysystem.firebase.distance;
 
-public class SlideshowFragment extends Fragment {
+public class FireFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private FireViewModel slideshowViewModel;
     private FirebaseUser user;
     private DatabaseReference reference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+                new ViewModelProvider(this).get(FireViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
 
