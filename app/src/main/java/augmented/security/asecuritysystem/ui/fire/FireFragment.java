@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +35,10 @@ public class FireFragment extends Fragment {
         slideshowViewModel =
                 new ViewModelProvider(this).get(FireViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
 
+
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        ImageView fireimg = root.findViewById(R.id.fire);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("data");
@@ -49,7 +52,13 @@ public class FireFragment extends Fragment {
                 String fire = dataprofile.fire;
                 Integer time = dataprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Fire: ", fire));
+                textView.setText(String.format("%s", fire));
+                if (fire.equals("We're safe! No fire.")) {
+                    fireimg.setVisibility(View.INVISIBLE);
+                }
+                else  {
+                    fireimg.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -59,7 +68,13 @@ public class FireFragment extends Fragment {
                 String fire = dataprofile.fire;
                 Integer time = dataprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Fire: ", fire));
+                textView.setText(String.format("%s", fire));
+                if (fire.equals("We're safe! No fire.")) {
+                    fireimg.setVisibility(View.INVISIBLE);
+                }
+                else  {
+                    fireimg.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -74,7 +89,13 @@ public class FireFragment extends Fragment {
                 String fire = dataprofile.fire;
                 Integer time = dataprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Fire: ", fire));
+                textView.setText(String.format("%s", fire));
+                if (fire.equals("We're safe! No fire.")) {
+                    fireimg.setVisibility(View.INVISIBLE);
+                }
+                else  {
+                    fireimg.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -82,6 +103,9 @@ public class FireFragment extends Fragment {
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
             }
         });
+
+
+
 
 
 
