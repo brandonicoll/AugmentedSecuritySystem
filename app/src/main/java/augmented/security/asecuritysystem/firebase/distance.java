@@ -16,4 +16,20 @@ public class distance {
 
 
     }
+
+    public long getRange() {
+        return range;
+    }
+
+    public void setRange(long range) {
+        this.range = range;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+    }
 }

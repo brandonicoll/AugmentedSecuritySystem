@@ -9,8 +9,23 @@ public class data{
 
     }
 
+    public String getFire() {
+        return fire;
+    }
 
-    public data(String fire,Integer timestamp)
+    public void setFire(String fire) {
+        this.fire = fire;
+    }
+
+    public Integer getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Integer timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public data(String fire, Integer timestamp)
     {
         this.fire = fire;
         this.timestamp = timestamp;
