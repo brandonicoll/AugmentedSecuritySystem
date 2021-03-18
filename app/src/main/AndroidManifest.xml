@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ASecuritySystem">
-        <activity android:name=".Login.RegisterActivity"></activity>
+        <activity android:name=".ui.distance.history.DistanceActivity"></activity>
+        <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.ASecuritySystem.NoActionBar"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.ASecuritySystem.NoActionBar" />
         <activity
             android:name=".Login.LoginActivity"
             android:label="@string/app_name"

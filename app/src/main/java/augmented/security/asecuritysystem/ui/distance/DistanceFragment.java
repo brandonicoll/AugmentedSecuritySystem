@@ -1,5 +1,6 @@
 package augmented.security.asecuritysystem.ui.distance;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.distance;
+import augmented.security.asecuritysystem.ui.distance.history.DistanceActivity;
 
 
 public class DistanceFragment extends Fragment {
@@ -34,6 +37,8 @@ public class DistanceFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         TextView textView = root.findViewById(R.id.text_gallery);
+        ExtendedFloatingActionButton extendedFloatingActionButton= root.findViewById(R.id.launch_history);
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("distance");
@@ -103,6 +108,12 @@ public class DistanceFragment extends Fragment {
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
             }
         });*/
+        extendedFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DistanceActivity.class));
+            }
+        });
 
         return root;
     }
