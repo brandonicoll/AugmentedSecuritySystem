@@ -32,9 +32,10 @@ public class DistanceActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         mReference = FirebaseDatabase.getInstance().getReference("distance");
         recyclerView = findViewById(R.id.recycler1);
-
-        recyclerView.setLayoutManager(
-                new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         FirebaseRecyclerOptions<distance> options
                 = new FirebaseRecyclerOptions.Builder<distance>()
