@@ -1,5 +1,9 @@
 package augmented.security.asecuritysystem.ui.distance;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -44,6 +48,22 @@ public class DistanceFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("distance");
         //userID = distance.getUID;
 
+
+        //notification channel and manager code
+        int notifyID = 1;
+        String CHANNEL_ID = "my_channel_02";
+        CharSequence name = "Expense";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+        Notification notification = new Notification.Builder(getActivity())
+                .setContentTitle("ALERT:")
+                .setContentText("Motion Detected")
+                .setSmallIcon(R.drawable.fire_png_transparent)
+                .setChannelId(CHANNEL_ID)
+                .build();
+
+
+
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -53,6 +73,15 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range));
+
+                if(range != 8190) {
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
+                }
+
+
             }
 
             @Override
@@ -63,6 +92,13 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range));
+
+                if(range != 8190) {
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
+                }
             }
 
             @Override
@@ -78,6 +114,14 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range));
+
+                if(range != 8190) {
+                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+                    mNotificationManager.createNotificationChannel(mChannel);
+                    mNotificationManager.notify(notifyID , notification);
+                }
+
             }
 
             @Override
