@@ -52,7 +52,7 @@ public class FireFragment extends Fragment {
         int notifyID = 1;
         String CHANNEL_ID = "my_channel_01";
         CharSequence name = "Expense";
-        int importance = NotificationManager.IMPORTANCE_HIGH;
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
         Notification notification = new Notification.Builder(getActivity())
                 .setContentTitle("ALERT:")
