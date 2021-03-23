@@ -24,7 +24,7 @@ public class LockAdapter extends FirebaseRecyclerAdapter<rfid, LockAdapter.Lview
 
         holder.id.setText(String.valueOf(model.getId()));
         holder.info.setText(String.valueOf(model.getInfo()));
-
+        holder.date.setText(String.valueOf(model.getDate(model.getTimestamp())));
 
     }
 
@@ -38,13 +38,13 @@ public class LockAdapter extends FirebaseRecyclerAdapter<rfid, LockAdapter.Lview
     }
 
     public static class LviewH extends RecyclerView.ViewHolder {
-        TextView id,info;
+        TextView id,info,date;
         public LviewH(@NonNull View itemView)
         {
             super(itemView);
             id = itemView.findViewById(R.id.ID_history);
             info = itemView.findViewById(R.id.Info_history);
-
+            date = itemView.findViewById(R.id.Date_history);
         }
     }
 }
