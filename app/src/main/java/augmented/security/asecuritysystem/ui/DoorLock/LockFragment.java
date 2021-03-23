@@ -1,9 +1,5 @@
 package augmented.security.asecuritysystem.ui.DoorLock;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,7 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.rfid;
 import augmented.security.asecuritysystem.ui.DoorLock.History.LockHist;
-import augmented.security.asecuritysystem.ui.distance.history.DistanceActivity;
 
 
 public class LockFragment extends Fragment {
