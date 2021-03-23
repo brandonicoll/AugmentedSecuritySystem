@@ -1,5 +1,10 @@
 package augmented.security.asecuritysystem.firebase;
 
+import android.text.format.DateFormat;
+
+import java.util.Calendar;
+import java.util.Locale;
+
 public class rfid {
     public long id;
     public String info;
@@ -39,5 +44,11 @@ public class rfid {
 
     public void setTimestamp(Integer timestamp) {
         this.timestamp = timestamp;
+    }
+    public String getDate(Integer timestamp) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(timestamp * 1000L);
+        String date = DateFormat.format("dd-MM-yyyy hh:mm:ss", cal).toString();
+        return date;
     }
 }
