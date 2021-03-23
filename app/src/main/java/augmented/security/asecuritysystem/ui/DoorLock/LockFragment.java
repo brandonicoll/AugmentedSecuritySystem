@@ -1,14 +1,17 @@
 package augmented.security.asecuritysystem.ui.DoorLock;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,10 +21,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import augmented.security.asecuritysystem.R;
-import augmented.security.asecuritysystem.firebase.distance;
 import augmented.security.asecuritysystem.firebase.rfid;
 
 
@@ -33,9 +34,10 @@ public class LockFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        TextView textView = root.findViewById(R.id.text_home);
-
+        View root = inflater.inflate(R.layout.fragment_lock, container, false);
+        TextView tvID = root.findViewById(R.id.ID);
+        TextView tvInfo = root.findViewById(R.id.Info);
+        ConstraintLayout CL = (ConstraintLayout) root.findViewById(R.id.BGConstraint);
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -46,12 +48,20 @@ public class LockFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 rfid rfidprofile = snapshot.getValue(rfid.class);
-
+                long rc = 322320012688L;
                 long id = rfidprofile.id;
                 String info = rfidprofile.info;
                 Integer time = rfidprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Id: ", id) + "\n" + String.format("%s%s", "Info: ", info));
+                tvID.setText(String.format("%s%s", " Id: ", id));
+                tvInfo.setText(String.format("%s%s", "Info: ", info));
+                if (id == rc){
+                        CL.setBackgroundColor(getResources().getColor(R.color.greenc));
+                }
+                else{
+                    CL.setBackgroundColor(getResources().getColor(R.color.redc));
+
+                }
             }
 
             @Override
@@ -62,7 +72,8 @@ public class LockFragment extends Fragment {
                 String info = rfidprofile.info;
                 Integer time = rfidprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Id: ", id) + "\n" + String.format("%s%s", "Info: ", info));
+                tvID.setText(String.format("%s%s", " Id: ", id));
+                tvInfo.setText(String.format("%s%s", "Info: ", info));
             }
 
             @Override
@@ -78,7 +89,8 @@ public class LockFragment extends Fragment {
                 String info = rfidprofile.info;
                 Integer time = rfidprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Id: ", id) + "\n" + String.format("%s%s", "Info: ", info));
+                tvID.setText(String.format("%s%s", " Id: ", id));
+                tvInfo.setText(String.format("%s%s", "Info: ", info));
             }
 
             @Override
