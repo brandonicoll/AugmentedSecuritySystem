@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -52,15 +53,26 @@ public class DistanceFragment extends Fragment {
         //notification channel and manager code
         int notifyID = 1;
         String CHANNEL_ID = "my_channel_02";
-        CharSequence name = "Expense";
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+        CharSequence name = "distance";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(),CHANNEL_ID)
+                .setContentTitle("ALERT:")
+                .setContentText("Motion Detected")
+                .setSmallIcon(R.drawable.fire_png_transparent)
+                .setChannelId(CHANNEL_ID)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setAutoCancel(true);
+
+        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+
+     /*   NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
         Notification notification = new Notification.Builder(getActivity())
                 .setContentTitle("ALERT:")
                 .setContentText("Motion Detected")
                 .setSmallIcon(R.drawable.fire_png_transparent)
                 .setChannelId(CHANNEL_ID)
-                .build();
+                .build();*/
 
 
 
@@ -72,13 +84,15 @@ public class DistanceFragment extends Fragment {
                 long range = distanceprofile.range;
                 int time = distanceprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Range: ", range));
+                textView.setText(String.format("%s%s", "Range: ", range) + "mm");
 
                 if(range != 8190) {
-                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
-                    mNotificationManager.createNotificationChannel(mChannel);
-                    mNotificationManager.notify(notifyID , notification);
+                    if(getActivity() !=null) {
+                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+                        mNotificationManager.createNotificationChannel(mChannel);
+                        mNotificationManager.notify(notifyID, builder.build());
+                    }
                 }
 
 
@@ -91,13 +105,15 @@ public class DistanceFragment extends Fragment {
                 long range = distanceprofile.range;
                 int time = distanceprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Range: ", range));
+                textView.setText(String.format("%s%s", "Range: ", range) + "mm");
 
                 if(range != 8190) {
-                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
-                    mNotificationManager.createNotificationChannel(mChannel);
-                    mNotificationManager.notify(notifyID , notification);
+                    if(getActivity() !=null) {
+                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+                        mNotificationManager.createNotificationChannel(mChannel);
+                        mNotificationManager.notify(notifyID, builder.build());
+                    }
                 }
             }
 
@@ -113,13 +129,15 @@ public class DistanceFragment extends Fragment {
                 long range = distanceprofile.range;
                 int time = distanceprofile.timestamp;
 
-                textView.setText(String.format("%s%s", "Range: ", range));
+                textView.setText(String.format("%s%s", "Range: ", range) + "mm");
 
                 if(range != 8190) {
-                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                    mChannel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
-                    mNotificationManager.createNotificationChannel(mChannel);
-                    mNotificationManager.notify(notifyID , notification);
+                    if(getActivity() !=null) {
+                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+                        mNotificationManager.createNotificationChannel(mChannel);
+                        mNotificationManager.notify(notifyID, builder.build());
+                    }
                 }
 
             }

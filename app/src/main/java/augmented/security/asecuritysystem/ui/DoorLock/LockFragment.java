@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +44,7 @@ public class LockFragment extends Fragment {
         user = FirebaseAuth.getInstance().getCurrentUser();
         breference = FirebaseDatabase.getInstance().getReference("rfid");
 
-        FloatingActionButton Histbtn = root.findViewById(R.id.Histbtn);
+        ExtendedFloatingActionButton Histbtn = root.findViewById(R.id.Histbtn);
 
 
         breference.addChildEventListener(new ChildEventListener() {
