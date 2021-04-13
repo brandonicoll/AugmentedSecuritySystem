@@ -107,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editTextPassword.setText(loginPreferences.getString("password", ""));
             saveLoginCheckBox.setChecked(true);
         }
+        checkIfUserLoggedIn();
     }
 
     @Override
@@ -267,5 +268,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 })
                 .setNegativeButton(cancel, null)
                 .show();
+    }
+    public void checkIfUserLoggedIn()
+    {
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() !=null)
+        {
+            startActivity(new Intent(this,MainActivity.class));
+        }
     }
 }

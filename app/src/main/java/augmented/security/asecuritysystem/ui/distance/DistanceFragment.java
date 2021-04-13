@@ -49,33 +49,6 @@ public class DistanceFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("distance");
         //userID = distance.getUID;
 
-
-        //notification channel and manager code
-        int notifyID = 1;
-        String CHANNEL_ID = "my_channel_02";
-        CharSequence name = "distance";
-        int importance = NotificationManager.IMPORTANCE_HIGH;
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(),CHANNEL_ID)
-                .setContentTitle("ALERT:")
-                .setContentText("Motion Detected")
-                .setSmallIcon(R.drawable.fire_png_transparent)
-                .setChannelId(CHANNEL_ID)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setAutoCancel(true);
-
-        NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID,name,importance);
-
-     /*   NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
-        Notification notification = new Notification.Builder(getActivity())
-                .setContentTitle("ALERT:")
-                .setContentText("Motion Detected")
-                .setSmallIcon(R.drawable.fire_png_transparent)
-                .setChannelId(CHANNEL_ID)
-                .build();*/
-
-
-
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -85,16 +58,6 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range) + "mm");
-
-                if(range != 8190) {
-                    if(getActivity() !=null) {
-                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
-                        mNotificationManager.createNotificationChannel(mChannel);
-                        mNotificationManager.notify(notifyID, builder.build());
-                    }
-                }
-
 
             }
 
@@ -106,15 +69,6 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range) + "mm");
-
-                if(range != 8190) {
-                    if(getActivity() !=null) {
-                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
-                        mNotificationManager.createNotificationChannel(mChannel);
-                        mNotificationManager.notify(notifyID, builder.build());
-                    }
-                }
             }
 
             @Override
@@ -131,15 +85,6 @@ public class DistanceFragment extends Fragment {
 
                 textView.setText(String.format("%s%s", "Range: ", range) + "mm");
 
-                if(range != 8190) {
-                    if(getActivity() !=null) {
-                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
-                        mNotificationManager.createNotificationChannel(mChannel);
-                        mNotificationManager.notify(notifyID, builder.build());
-                    }
-                }
-
             }
 
             @Override
@@ -148,28 +93,6 @@ public class DistanceFragment extends Fragment {
             }
         });
 
-        //Hardcoded Child, no longer needed.
-
-      /*  reference.child("-MUjfQvJr9V4tXsTmwQd").addListenerForSingleValueEvent(new ValueEventListener() {
-            //Sets the textview for the greeting message
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-                userdata userprofile = snapshot.getValue(userdata.class);
-
-                    long range = userprofile.range;
-                    int time = userprofile.timestamp;
-
-                    textView.setText(String.format("%s%s", "Range: ", range));
-
-            }
-            //Displays an error message if you cancel the onCreate
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
-            }
-        });*/
         extendedFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

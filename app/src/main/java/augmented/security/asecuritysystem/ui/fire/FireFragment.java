@@ -103,10 +103,14 @@ public class FireFragment extends Fragment {
                     fireimg.setVisibility(View.INVISIBLE);
                 }
                 else  {
-                    fireimg.setVisibility(View.VISIBLE);
-                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                    mNotificationManager.createNotificationChannel(mChannel);
-                    mNotificationManager.notify(notifyID , builder.build());
+                    if(getActivity() !=null) {
+                        fireimg.setVisibility(View.VISIBLE);
+                        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
+                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+                        mNotificationManager.createNotificationChannel(mChannel);
+                        mNotificationManager.notify(notifyID, builder.build());
+                    }
                 }
             }
 
@@ -127,10 +131,14 @@ public class FireFragment extends Fragment {
                     fireimg.setVisibility(View.INVISIBLE);
                 }
                 else  {
-                    fireimg.setVisibility(View.VISIBLE);
-                    NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-                    mNotificationManager.createNotificationChannel(mChannel);
-                    mNotificationManager.notify(notifyID , builder.build());
+                    if(getActivity() !=null) {
+                        fireimg.setVisibility(View.VISIBLE);
+                        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 36);
+                        NotificationManager mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+                        mNotificationManager.createNotificationChannel(mChannel);
+                        mNotificationManager.notify(notifyID, builder.build());
+                    }
                 }
             }
 

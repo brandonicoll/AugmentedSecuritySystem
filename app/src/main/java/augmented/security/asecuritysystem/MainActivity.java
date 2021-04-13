@@ -8,15 +8,19 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import androidx.constraintlayout.solver.state.State;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -29,6 +33,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import augmented.security.asecuritysystem.Login.LoginActivity;
+import augmented.security.asecuritysystem.firebase.MyFirebaseInstanceIdService;
 
 import static augmented.security.asecuritysystem.R.string.ok;
 import static augmented.security.asecuritysystem.R.string.cancel;
@@ -112,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(cancel, null)
                 .show();
-        FirebaseAuth.getInstance().signOut();
+
     }
 
     @Override
