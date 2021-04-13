@@ -61,16 +61,17 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
                 NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 if (Build.VERSION.SDK_INT >= 26) {
 
-
-                    NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-                    manager.createNotificationChannel(channel);
-                    Notification notification = new Notification.Builder(getApplicationContext(), CHANNEL_ID)
-                            .setSmallIcon(R.drawable.fire_png_transparent)
-                            .setContentTitle("ALERT")
-                            .setContentText("Motion Detected")
-                            .setAutoCancel(true)
-                            .build();
-                    manager.notify(notifyID, notification);
+                    if (getApplicationContext() != null) {
+                        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+                        manager.createNotificationChannel(channel);
+                        Notification notification = new Notification.Builder(getApplicationContext(), CHANNEL_ID)
+                                .setSmallIcon(R.drawable.fire_png_transparent)
+                                .setContentTitle("ALERT")
+                                .setContentText("Motion Detected")
+                                .setAutoCancel(true)
+                                .build();
+                        manager.notify(notifyID, notification);
+                    }
                 }
             }
 

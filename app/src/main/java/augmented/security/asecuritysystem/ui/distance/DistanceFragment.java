@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.w3c.dom.Text;
+
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.distance;
 import augmented.security.asecuritysystem.ui.distance.history.DistanceActivity;
@@ -42,7 +44,9 @@ public class DistanceFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         TextView textView = root.findViewById(R.id.text_gallery);
+        TextView textView1 = root.findViewById(R.id.textView);
         ExtendedFloatingActionButton extendedFloatingActionButton= root.findViewById(R.id.launch_history);
+
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -58,6 +62,11 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range) + "mm");
+                if(range ==0) {
+                    textView1.setText("No Motion Detected");
+                }else{
+                    textView1.setText("Motion Detected");
+                }
 
             }
 
@@ -69,6 +78,7 @@ public class DistanceFragment extends Fragment {
                 int time = distanceprofile.timestamp;
 
                 textView.setText(String.format("%s%s", "Range: ", range) + "mm");
+
             }
 
             @Override
