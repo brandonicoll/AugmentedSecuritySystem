@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -59,10 +60,12 @@ public class LockFragment extends Fragment {
                 tvID.setText(String.format("%s%s", " Id: ", id));
                 tvInfo.setText(String.format("%s%s", "Info: ", info));
                 if (id == rc){
-                        CL.setBackgroundColor(getResources().getColor(R.color.greenc));
+                    CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
+                            R.color.greenc));
                 }
                 else{
-                    CL.setBackgroundColor(getResources().getColor(R.color.redc));
+                    CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
+                            R.color.redc));
 
                 }
             }
