@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,10 @@ public class LockFragment extends Fragment {
         TextView tvID = root.findViewById(R.id.ID);
         TextView tvInfo = root.findViewById(R.id.Info);
         ConstraintLayout CL = (ConstraintLayout) root.findViewById(R.id.BGConstraint);
+        ImageView img = root.findViewById(R.id.imageView3);
+        ImageView img2 = root.findViewById(R.id.imageView5);
+        img.setVisibility(View.INVISIBLE);
+        img2.setVisibility(View.INVISIBLE);
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -62,11 +67,14 @@ public class LockFragment extends Fragment {
                 if (id == rc){
                     CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
                             R.color.greenc));
+                    img.setVisibility(View.VISIBLE);
+                    img2.setVisibility(View.INVISIBLE);
                 }
                 else{
                     CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
                             R.color.redc));
-
+                            img2.setVisibility(View.VISIBLE);
+                            img.setVisibility(View.INVISIBLE);
                 }
             }
 
