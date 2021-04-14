@@ -66,8 +66,8 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
                         manager.createNotificationChannel(channel);
                         Notification notification = new Notification.Builder(getApplicationContext(), CHANNEL_ID)
                                 .setSmallIcon(R.drawable.fire_png_transparent)
-                                .setContentTitle("ALERT")
-                                .setContentText("Motion Detected")
+                                .setContentTitle(remoteMessage.getData().get("title"))
+                                .setContentText(remoteMessage.getData().get("text"))
                                 .setAutoCancel(true)
                                 .build();
                         manager.notify(notifyID, notification);
