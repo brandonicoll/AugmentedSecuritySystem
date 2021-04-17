@@ -83,7 +83,7 @@ public class DistanceFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
+                textView1.setText("No Motion Detected");
             }
 
             @Override
