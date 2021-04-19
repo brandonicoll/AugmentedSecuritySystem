@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ConstraintLayout ml;
-    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         ml = (ConstraintLayout)findViewById(R.id.mLaout);
         Load_settings();
-        createTopic();
     }
 
     @Override
@@ -179,22 +177,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    public void createTopic() {
-        try {
-            FirebaseMessaging.getInstance().subscribeToTopic("distance")
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            String msg = getString(R.string.msg_subscribed);
-                            if (!task.isSuccessful()) {
-                                msg = getString(R.string.msg_subscribe_failed);
-                            }
-                            Log.d(TAG, msg);
-                        }
-                    });
-        }catch (NullPointerException ex){
-            ex.printStackTrace();
-        }
-    }
+
 
 }

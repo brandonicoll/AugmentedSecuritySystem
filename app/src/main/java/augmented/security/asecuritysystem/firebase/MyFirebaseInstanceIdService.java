@@ -79,7 +79,7 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
                                     .setContentText(remoteMessage.getData().get("text"))
                                     .setAutoCancel(true)
                                     .setWhen(Calendar.getInstance().getTimeInMillis())
-                                  //  .setContentIntent(pendingIntent)
+                                  .setContentIntent(pendingIntent)
                                     .build();
                             manager.notify(notifyID, notification);
                         }
