@@ -1,19 +1,17 @@
 package augmented.security.asecuritysystem.ui.DoorLock;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -29,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.rfid;
 import augmented.security.asecuritysystem.ui.DoorLock.History.LockHist;
-import augmented.security.asecuritysystem.ui.distance.history.DistanceActivity;
 
 
 public class LockFragment extends Fragment {
@@ -44,12 +41,16 @@ public class LockFragment extends Fragment {
         TextView tvID = root.findViewById(R.id.ID);
         TextView tvInfo = root.findViewById(R.id.Info);
         ConstraintLayout CL = (ConstraintLayout) root.findViewById(R.id.BGConstraint);
+        ImageView img = root.findViewById(R.id.imageView3);
+        ImageView img2 = root.findViewById(R.id.imageView5);
+        img.setVisibility(View.INVISIBLE);
+        img2.setVisibility(View.INVISIBLE);
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         breference = FirebaseDatabase.getInstance().getReference("rfid");
 
-        FloatingActionButton Histbtn = root.findViewById(R.id.Histbtn);
+        ExtendedFloatingActionButton Histbtn = root.findViewById(R.id.Histbtn);
 
 
         breference.addChildEventListener(new ChildEventListener() {
@@ -64,11 +65,16 @@ public class LockFragment extends Fragment {
                 tvID.setText(String.format("%s%s", " Id: ", id));
                 tvInfo.setText(String.format("%s%s", "Info: ", info));
                 if (id == rc){
-                        CL.setBackgroundColor(getResources().getColor(R.color.greenc));
+                    CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
+                            R.color.greenc));
+                    img.setVisibility(View.VISIBLE);
+                    img2.setVisibility(View.INVISIBLE);
                 }
                 else{
-                    CL.setBackgroundColor(getResources().getColor(R.color.redc));
-
+                    CL.setBackgroundColor(ContextCompat.getColor(getActivity(),
+                            R.color.redc));
+                            img2.setVisibility(View.VISIBLE);
+                            img.setVisibility(View.INVISIBLE);
                 }
             }
 

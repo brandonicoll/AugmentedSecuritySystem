@@ -13,7 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import augmented.security.asecuritysystem.R;
 import augmented.security.asecuritysystem.firebase.rfid;
-import augmented.security.asecuritysystem.ui.distance.history.adapter.distanceAdapter;
 
 public class LockHist extends AppCompatActivity {
     private RecyclerView recyclerView;

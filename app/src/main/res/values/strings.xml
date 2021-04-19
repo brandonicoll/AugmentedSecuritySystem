@@ -41,6 +41,12 @@
     <string name="Surelogout">Are you sure you want to logout?</string>
     <string name="exit">Exit settings?</string>
     <string name="augmented_security_system">Augmented Security System</string>
+    <string name="msg_subscribed">Subscribed to distance topic</string>
+    <string name="msg_subscribe_failed">Failed to subscribe to distance topic</string>
+    <string name="default_notification_channel_name" translatable="true">Distance</string>
+    <string name="default_notification_channel_id" translatable="false">distance_channel</string>
+
+
 
 
 </resources>

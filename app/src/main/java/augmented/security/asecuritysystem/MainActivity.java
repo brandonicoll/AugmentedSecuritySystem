@@ -8,16 +8,24 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.solver.state.State;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
@@ -29,6 +37,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import augmented.security.asecuritysystem.Login.LoginActivity;
+import augmented.security.asecuritysystem.firebase.MyFirebaseInstanceIdService;
 
 import static augmented.security.asecuritysystem.R.string.ok;
 import static augmented.security.asecuritysystem.R.string.cancel;
@@ -42,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ConstraintLayout ml;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -71,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         ml = (ConstraintLayout)findViewById(R.id.mLaout);
         Load_settings();
+        createTopic();
     }
 
     @Override
@@ -112,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(cancel, null)
                 .show();
-        FirebaseAuth.getInstance().signOut();
+
     }
 
     @Override
@@ -168,6 +179,22 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
+    public void createTopic() {
+        try {
+            FirebaseMessaging.getInstance().subscribeToTopic("distance")
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            String msg = getString(R.string.msg_subscribed);
+                            if (!task.isSuccessful()) {
+                                msg = getString(R.string.msg_subscribe_failed);
+                            }
+                            Log.d(TAG, msg);
+                        }
+                    });
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+        }
+    }
 
 }
