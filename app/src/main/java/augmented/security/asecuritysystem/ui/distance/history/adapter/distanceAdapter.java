@@ -22,7 +22,7 @@ public class distanceAdapter extends FirebaseRecyclerAdapter<distance, distanceA
     @Override
     protected void onBindViewHolder(@NonNull distanceViewholder holder, int position, @NonNull distance model) {
 
-        holder.range.setText(String.valueOf(model.getRange()));
+        holder.range.setText(String.valueOf(model.getRange()) + "\tmm");
         holder.time.setText(String.valueOf(model.getDate(model.getTimestamp())));
 
 
